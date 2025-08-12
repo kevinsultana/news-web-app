@@ -13,13 +13,13 @@ export default function Navbar() {
         <Link href="/">
           <p className="flex items-center">
             <Image
-              src="/ks-news-logo.png"
+              src="/ks-news-logoo.png"
               alt="KS News Logo"
-              className="h-8 mr-2"
-              width={32}
-              height={32}
+              className="h-8 w-auto mr-2"
+              width={50}
+              height={50}
             />
-            <span className="font-bold text-lg text-black">KS NEWS</span>
+            <span className="font-bold text-lg text-black">NEWS</span>
           </p>
         </Link>
       </div>
