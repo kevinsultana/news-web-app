@@ -1,5 +1,4 @@
-import React from "react";
-
-export default function error() {
+"use client";
+export default function Error() {
   return <div>error</div>;
 }
