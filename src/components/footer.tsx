@@ -15,7 +15,7 @@ export default function Footer() {
             height={100}
             className="w-20 h-20  object-cover object-center rounded-full"
           />
-          <p className="mt-4 text-sm">copyright &copy; 2025 | KS News</p>
+          <p className="mt-4 text-sm">copyright 2025 | KS News</p>
         </div>
 
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-12 mb-6 md:mb-0">
