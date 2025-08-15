@@ -1,3 +1,4 @@
+import formatDate from "@/utils/FormatDate";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -53,7 +54,7 @@ export default function Hero({ data }: { data: News[] }) {
 
           {/* Informasi Meta */}
           <div className="flex flex-col lg:items-center md:flex-row md:space-x-4 text-sm text-gray-600">
-            <span>{data[0].published_date}</span>
+            <span>{formatDate(data[0].published_date)}</span>
             <span className="hidden md:inline">|</span>
             <span>{data[0].byline}</span>
             <span className="hidden md:inline">|</span>

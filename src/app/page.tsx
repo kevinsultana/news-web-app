@@ -22,7 +22,9 @@ export default async function Home() {
         <BreakingNews data={news} />
       </section>
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <NewsCard />
+        {news.slice(2).map((item, index) => (
+          <NewsCard key={index} data={item} />
+        ))}
       </section>
     </div>
   );

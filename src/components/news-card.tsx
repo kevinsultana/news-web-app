@@ -1,31 +1,42 @@
+import formatDate from "@/utils/FormatDate";
 import Image from "next/image";
+import Link from "next/link";
 import { FaBookmark, FaHeart, FaShare } from "react-icons/fa6";
 
-export default function NewsCard() {
+export default function NewsCard({ data }: { data: News }) {
   return (
     <div className="bg-white p-2 rounded-lg shadow-lg max-w-lg mx-auto overflow-hidden ">
       <div className="relative w-85 h-64">
         <Image
-          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+          src={
+            data?.multimedia?.find(
+              (item) => item.format === "mediumThreeByTwo440"
+            )?.url || "null"
+          }
           alt="Article Image"
           layout="fill"
           objectFit="cover"
+          className="w-full h-full rounded-lg"
         />
       </div>
 
-      <div className="p-6">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
-          title
-        </h2>
-        <p className="text-gray-600 mb-6 leading-relaxed">summary</p>
+      <div className="p-6 h-fit ">
+        <div className="flex flex-col h-full">
+          <h2 className="text-xl md:text-2xl font-bold mb-4 leading-tight">
+            {data.title}
+          </h2>
+          <p className="text-base text-gray-600 mb-6 leading-tight">
+            {data.abstract}
+          </p>
+        </div>
 
         <div className="border-t border-gray-200 pt-4 pb-2">
           <div className="flex flex-wrap space-x-2 text-sm text-gray-500 mb-4">
-            <span>timeAgo</span>
+            <span>{formatDate(data.published_date)}</span>
             <span className="hidden md:inline">|</span>
-            <span>By author</span>
+            <span>{data.byline}r</span>
             <span className="hidden md:inline">|</span>
-            <span>readTime read</span>
+            <span>{data.source}</span>
           </div>
         </div>
 
@@ -41,6 +52,11 @@ export default function NewsCard() {
           <div className="flex items-center space-x-1">
             <FaBookmark size={18} />
           </div>
+          <Link href={data.url}>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer text-sm text-nowrap">
+              Read More
+            </button>
+          </Link>
         </div>
       </div>
     </div>
