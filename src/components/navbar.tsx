@@ -1,11 +1,15 @@
 "use client";
+import { categories } from "@/constant/categories";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { AiOutlineSearch, AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isShowMoreOpen, setIsShowMoreOpen] = useState<boolean>(false);
+
   return (
     <nav className=" mx-auto bg-white p-4 shadow-md ">
       <div className="flex items-center justify-between container mx-auto">
@@ -26,27 +30,38 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex flex-grow justify-center space-x-6">
-          <Link href="/corona-updates">
-            <p className="text-gray-700 hover:text-blue-600">Corona Updates</p>
-          </Link>
-          <Link href="/politics">
-            <p className="text-gray-700 hover:text-blue-600">Politics</p>
-          </Link>
-          <Link href="/business">
-            <p className="text-gray-700 hover:text-blue-600">Business</p>
-          </Link>
-          <Link href="/sports">
-            <p className="text-gray-700 hover:text-blue-600">Sports</p>
-          </Link>
-          <Link href="/world">
-            <p className="text-gray-700 hover:text-blue-600">World</p>
-          </Link>
-          <Link href="/travel">
-            <p className="text-gray-700 hover:text-blue-600">Travel</p>
-          </Link>
-          <Link href="/podcasts">
-            <p className="text-gray-700 hover:text-blue-600">Podcasts</p>
-          </Link>
+          {categories.slice(0, 5).map((category, index) => (
+            <Link key={index} href={`/category/${category}`}>
+              <p className="text-gray-700 hover:text-blue-600 capitalize">
+                {category}
+              </p>
+            </Link>
+          ))}
+          <div className="relative">
+            <button
+              onClick={() => setIsShowMoreOpen(!isShowMoreOpen)}
+              className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors duration-200"
+            >
+              Show {isShowMoreOpen ? "less" : "more"}{" "}
+              <span>
+                {isShowMoreOpen ? <FaChevronUp /> : <FaChevronDown />}
+              </span>
+            </button>
+            {isShowMoreOpen && (
+              <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-white shadow-md rounded-lg py-2 z-10 w-40">
+                {categories.slice(5).map((category, index) => (
+                  <Link
+                    key={index}
+                    href={`/category/${category}`}
+                    onClick={() => setIsShowMoreOpen(false)}
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 capitalize"
+                  >
+                    {category}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Ikon Kanan */}
@@ -59,7 +74,7 @@ export default function Navbar() {
           {/* Tombol Menu (mobile) */}
           <button
             className="md:hidden text-2xl"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setIsMenuOpen(true)}
           >
             <AiOutlineMenu />
           </button>
@@ -70,35 +85,17 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg p-4">
           <div className="flex flex-col space-y-2">
-            <Link href="/corona-updates">
-              <p className="block text-gray-700 hover:text-blue-600">
-                Corona Updates
-              </p>
-            </Link>
-            <Link href="/politics">
-              <p className="block text-gray-700 hover:text-blue-600">
-                Politics
-              </p>
-            </Link>
-            <Link href="/business">
-              <p className="block text-gray-700 hover:text-blue-600">
-                Business
-              </p>
-            </Link>
-            <Link href="/sports">
-              <p className="block text-gray-700 hover:text-blue-600">Sports</p>
-            </Link>
-            <Link href="/world">
-              <p className="block text-gray-700 hover:text-blue-600">World</p>
-            </Link>
-            <Link href="/travel">
-              <p className="block text-gray-700 hover:text-blue-600">Travel</p>
-            </Link>
-            <Link href="/podcasts">
-              <p className="block text-gray-700 hover:text-blue-600">
-                Podcasts
-              </p>
-            </Link>
+            {categories.map((category, index) => (
+              <Link
+                key={index}
+                href={`/category/${category}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <p className="block text-gray-700 hover:text-blue-600 capitalize">
+                  {category}
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
       )}
