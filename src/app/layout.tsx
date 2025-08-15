@@ -20,7 +20,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "KS News Web Portal",
     description: "News Web Portal",
-    images: "/ks-news-logo-long.png",
+    images:
+      "https://res.cloudinary.com/dpjdzqghj/image/upload/v1755294187/ks-news-logo-long_gtwcsg.png",
   },
 };
 
