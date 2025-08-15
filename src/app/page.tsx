@@ -2,11 +2,21 @@ import BreakingNews from "@/components/home/breaking-news";
 import Hero from "@/components/home/hero";
 import NewsCard from "@/components/news-card";
 
-export default function Home() {
+export default async function Home() {
+  const fetchNews = async () => {
+    const res = await fetch(
+      `https://api.nytimes.com/svc/news/v3/content/all/all.json?limit=2&api-key=${process.env.NYT_API_KEY}`
+    );
+    const data = await res.json();
+    return data.results as News[];
+  };
+
+  const news = await fetchNews();
+
   return (
     <div className="space-y-6">
       <section id="hero">
-        <Hero />
+        <Hero data={news} />
       </section>
       <section id="breaking-news">
         <BreakingNews />

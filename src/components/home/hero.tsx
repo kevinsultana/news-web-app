@@ -3,21 +3,27 @@ import React from "react";
 import { FaShareAlt } from "react-icons/fa";
 import { FaRegBookmark, FaRegHeart } from "react-icons/fa6";
 
-export default function Hero() {
+export default function Hero({ data }: { data: News[] }) {
   return (
     <div className="flex items-center justify-center gap-6">
       <Image
-        src="/ks-news-logoo.png"
+        src={
+          data[0]?.multimedia?.find(
+            (item) => item.format === "mediumThreeByTwo440"
+          )?.url || "null"
+        }
         alt="KS News Logo"
         width={1000}
         height={1000}
-        className="w-1/3 h-auto object-cover object-center bg-amber-200"
+        className="w-1/3 h-auto object-contain bg-amber-200"
       />
       <div className="text-black p-6 md:p-12  max-w-1/2">
-        <div className=" ">
+        <div className="">
           {/* Header dan Ikon Aksi */}
           <div className="flex justify-between items-center mb-6">
-            <span className="text-red-500 font-bold uppercase">category</span>
+            <span className="text-red-500 font-bold uppercase">
+              {data[0].section}
+            </span>
             <div className="flex space-x-6 text-gray-400">
               <FaRegHeart
                 className="cursor-pointer hover:text-blue-500"
@@ -36,24 +42,21 @@ export default function Hero() {
 
           {/* Judul Utama */}
           <h1 className="text-4xl md:text-2xl font-bold leading-tight mb-6">
-            title yang panjang disini coba aja kayak gmna bentuknya kyak gmna
-            coba
+            {data[0].title}
           </h1>
 
           {/* Subjudul/Deskripsi Awal */}
           <p className="text-lg md:text-xl text-gray-800 font-light mb-8">
-            subtitle yang panjang gmna bentuknya apakah aman dan sentosa
-            subtitle yang panjang gmna bentuknya apakah aman dan sentosa
-            subtitle yang panjang gmna bentuknya apakah aman dan sentosa
+            {data[0].abstract}
           </p>
 
           {/* Informasi Meta */}
           <div className="flex flex-col md:flex-row md:space-x-4 text-sm text-gray-600">
-            <span>5 min Ago</span>
+            <span>{data[0].published_date}</span>
             <span className="hidden md:inline">|</span>
-            <span>By author</span>
+            <span>{data[0].byline}</span>
             <span className="hidden md:inline">|</span>
-            <span>4 min read</span>
+            <span>{data[0].source}</span>
           </div>
         </div>
       </div>

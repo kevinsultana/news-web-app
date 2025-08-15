@@ -51,7 +51,9 @@ export default function Navbar() {
 
         {/* Ikon Kanan */}
         <div className="flex items-center space-x-4">
-          <AiOutlineSearch className="text-2xl cursor-pointer text-black" />
+          <Link href="/search">
+            <AiOutlineSearch className="text-2xl cursor-pointer text-black" />
+          </Link>
           <AiOutlineUser className="text-2xl cursor-pointer text-black" />
 
           {/* Tombol Menu (mobile) */}
