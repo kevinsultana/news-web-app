@@ -19,3 +19,13 @@ interface BreakingNews {
   abstract: string;
   url: string;
 }
+
+interface SearchNews {
+  headline: { main: string };
+  abstract: string;
+  byline: { original: string };
+  multimedia: { default: { url: string } };
+  source: string;
+  pub_date: string;
+  web_url: string;
+}

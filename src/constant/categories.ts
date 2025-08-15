@@ -1,7 +1,6 @@
 export const categories = [
   "arts",
   "automobiles",
-  "books/review",
   "business",
   "fashion",
   "food",

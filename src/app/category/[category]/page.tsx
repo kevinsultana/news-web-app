@@ -18,10 +18,9 @@ export default async function CategoryPage({
   };
 
   const news = await fetchData();
-  console.log(news[0]);
 
   return (
-    <div>
+    <div className="space-y-6">
       <section id="hero">
         <Hero data={news} />
       </section>

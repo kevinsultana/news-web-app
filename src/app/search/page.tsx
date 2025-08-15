@@ -2,9 +2,23 @@
 import NewsCard from "@/components/news-card";
 import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import SearchFunction from "./action";
+import ResultCard from "@/components/result-card";
 
 export default function SearchPage() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [newsData, setNewsData] = useState<SearchNews[]>([]);
+
+  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const data = await SearchFunction(searchQuery);
+      setNewsData(data.response.docs);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  console.log(newsData[0]);
 
   return (
     <div className="space-y-8 my-6">
@@ -15,7 +29,10 @@ export default function SearchPage() {
         <p className="text-gray-600 mb-6">
           Temukan berita terbaru dari seluruh dunia.
         </p>
-        <form className="flex items-center w-full max-w-2xl mx-auto">
+        <form
+          onSubmit={handleSearch}
+          className="flex items-center w-full max-w-2xl mx-auto"
+        >
           <input
             type="text"
             value={searchQuery}
@@ -33,7 +50,11 @@ export default function SearchPage() {
       </section>
 
       <section id="search-results">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {newsData.map((item, index) => (
+            <ResultCard key={index} data={item} />
+          ))}
+        </div>
       </section>
     </div>
   );
