@@ -39,10 +39,10 @@ export default function Navbar() {
           ))}
           <div className="relative">
             <button
-              onClick={() => setIsShowMoreOpen(!isShowMoreOpen)}
+              onMouseEnter={() => setIsShowMoreOpen(true)}
               className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors duration-200"
             >
-              Show {isShowMoreOpen ? "less" : "more"}{" "}
+              Show more
               <span>
                 {isShowMoreOpen ? <FaChevronUp /> : <FaChevronDown />}
               </span>
@@ -54,6 +54,8 @@ export default function Navbar() {
                     key={index}
                     href={`/category/${category}`}
                     onClick={() => setIsShowMoreOpen(false)}
+                    onMouseEnter={() => setIsShowMoreOpen(true)}
+                    onMouseLeave={() => setIsShowMoreOpen(false)}
                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 capitalize"
                   >
                     {category}

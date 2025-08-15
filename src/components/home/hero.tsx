@@ -10,9 +10,12 @@ export default function Hero({ data }: { data: News[] }) {
     <div className="flex items-center justify-center gap-6">
       <Image
         src={
-          data[0]?.multimedia?.find(
-            (item) => item.format === "mediumThreeByTwo440"
-          )?.url || "null"
+          data[0].multimedia?.find(
+            (item) =>
+              item.format === "mediumThreeByTwo440" ||
+              item.format === "Super Jumbo" ||
+              item.format === "threeByTwoSmallAt2X"
+          )?.url ?? "/ks-news-logoo.png"
         }
         alt="KS News Logo"
         width={1000}

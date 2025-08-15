@@ -10,8 +10,11 @@ export default function NewsCard({ data }: { data: News }) {
         <Image
           src={
             data?.multimedia?.find(
-              (item) => item.format === "mediumThreeByTwo440"
-            )?.url || "null"
+              (item) =>
+                item.format === "mediumThreeByTwo440" ||
+                item.format === "Super Jumbo" ||
+                item.format === "threeByTwoSmallAt2X"
+            )?.url || "/ks-news-logoo.png"
           }
           alt="Article Image"
           layout="fill"
