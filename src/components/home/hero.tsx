@@ -7,7 +7,7 @@ import { FaRegBookmark, FaRegHeart } from "react-icons/fa6";
 
 export default function Hero({ data }: { data: News[] }) {
   return (
-    <div className="flex items-center justify-center gap-6">
+    <div className="flex flex-col md:flex-row items-center justify-center gap-6">
       <Image
         src={
           data[0].multimedia?.find(
@@ -20,12 +20,12 @@ export default function Hero({ data }: { data: News[] }) {
         alt="KS News Logo"
         width={1000}
         height={1000}
-        className="w-1/3 h-auto object-contain bg-amber-200"
+        className="w-full lg:w-1/3 h-auto object-contain bg-amber-200"
       />
-      <div className="text-black p-6 md:p-12  max-w-1/2">
+      <div className="text-black md:p-12  lg:max-w-1/2">
         <div className="">
           {/* Header dan Ikon Aksi */}
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex justify-between items-center mb-2 md:mb-6">
             <span className="text-red-500 font-bold uppercase">
               {data[0].section}
             </span>
@@ -46,17 +46,17 @@ export default function Hero({ data }: { data: News[] }) {
           </div>
 
           {/* Judul Utama */}
-          <h1 className="text-4xl md:text-2xl font-bold leading-tight mb-6">
+          <h1 className="text-xl md:text-2xl font-bold leading-tight mb-2 md:mb-6">
             {data[0].title}
           </h1>
 
           {/* Subjudul/Deskripsi Awal */}
-          <p className="text-lg md:text-xl text-gray-800 font-light mb-8">
+          <p className="text-base md:text-xl text-gray-800 font-light mb-2 md:mb-8">
             {data[0].abstract}
           </p>
 
-          {/* Informasi Meta */}
-          <div className="flex flex-col lg:items-center md:flex-row md:space-x-4 text-sm text-gray-600">
+          {/* Tombol Baca Selengkapnya */}
+          <div className="flex flex-col space-y-1 lg:items-center md:flex-row md:space-x-4 text-sm text-gray-600">
             <span>{formatDate(data[0].published_date)}</span>
             <span className="hidden md:inline">|</span>
             <span>{data[0].byline}</span>

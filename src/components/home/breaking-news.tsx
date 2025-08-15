@@ -7,7 +7,7 @@ export default function BreakingNews({ data }: { data: News[] }) {
 
   return (
     <div className="bg-red-700 text-white py-2">
-      <div className="flex justify-center items-center gap-8">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-8">
         <Link href={data[1].url}>
           <div
             onMouseEnter={() => setOnHover(true)}
@@ -18,7 +18,7 @@ export default function BreakingNews({ data }: { data: News[] }) {
           </div>
         </Link>
 
-        <div>
+        <div className="text-center md:text-left">
           <h1>{data[1].title}</h1>
           <p>{data[1].abstract}</p>
         </div>
