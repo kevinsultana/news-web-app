@@ -17,6 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "KS News Web Portal",
   description: "News Web Portal",
+  openGraph: {
+    title: "KS News Web Portal",
+    description: "News Web Portal",
+    images: "/ks-news-logo-long.png",
+  },
 };
 
 export default function RootLayout({
