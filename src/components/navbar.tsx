@@ -13,9 +13,8 @@ export default function Navbar() {
   return (
     <nav className=" mx-auto bg-white p-4 shadow-md ">
       <div className="flex items-center justify-between container mx-auto">
-        {/* Logo */}
         <div className="flex items-center">
-          <Link href="/">
+          <Link href="/" onClick={() => setIsMenuOpen(false)}>
             <p className="flex items-center">
               <Image
                 src="/ks-news-logoo.png"
@@ -66,24 +65,21 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Ikon Kanan */}
         <div className="flex items-center space-x-4">
-          <Link href="/search">
+          <Link href="/search" onClick={() => setIsMenuOpen(false)}>
             <AiOutlineSearch className="text-2xl cursor-pointer text-black" />
           </Link>
           <AiOutlineUser className="text-2xl cursor-pointer text-black" />
 
-          {/* Tombol Menu (mobile) */}
           <button
             className="md:hidden text-2xl"
-            onClick={() => setIsMenuOpen(true)}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <AiOutlineMenu />
           </button>
         </div>
       </div>
 
-      {/* Menu Mobile */}
       {isMenuOpen && (
         <div className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg p-4">
           <div className="flex flex-col space-y-2">

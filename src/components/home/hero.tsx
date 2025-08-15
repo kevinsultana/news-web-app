@@ -24,7 +24,6 @@ export default function Hero({ data }: { data: News[] }) {
       />
       <div className="text-black md:p-12  lg:max-w-1/2">
         <div className="">
-          {/* Header dan Ikon Aksi */}
           <div className="flex justify-between items-center mb-2 md:mb-6">
             <span className="text-red-500 font-bold uppercase">
               {data[0].section}
@@ -45,17 +44,14 @@ export default function Hero({ data }: { data: News[] }) {
             </div>
           </div>
 
-          {/* Judul Utama */}
           <h1 className="text-xl md:text-2xl font-bold leading-tight mb-2 md:mb-6">
             {data[0].title}
           </h1>
 
-          {/* Subjudul/Deskripsi Awal */}
           <p className="text-base md:text-xl text-gray-800 font-light mb-2 md:mb-8">
             {data[0].abstract}
           </p>
 
-          {/* Tombol Baca Selengkapnya */}
           <div className="flex flex-col space-y-1 lg:items-center md:flex-row md:space-x-4 text-sm text-gray-600">
             <span>{formatDate(data[0].published_date)}</span>
             <span className="hidden md:inline">|</span>

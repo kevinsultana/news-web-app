@@ -1,5 +1,4 @@
 "use client";
-import NewsCard from "@/components/news-card";
 import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import SearchFunction from "./action";
@@ -18,7 +17,6 @@ export default function SearchPage() {
       console.error(error);
     }
   };
-  console.log(newsData[0]);
 
   return (
     <div className="space-y-8 my-6">

@@ -12,7 +12,7 @@ export default async function CategoryPage({
 
   const fetchData = async () => {
     const url = `https://api.nytimes.com/svc/topstories/v2/${category}.json?api-key=${process.env.NYT_API_KEY}`;
-    const res = await fetch(url);
+    const res = await fetch(url, { next: { revalidate: 600 } });
     const data = await res.json();
     return data.results as News[];
   };
