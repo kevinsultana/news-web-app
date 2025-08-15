@@ -33,12 +33,7 @@ export default function SearchPage() {
       </section>
 
       <section id="search-results">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <NewsCard />
-          <NewsCard />
-          <NewsCard />
-          <NewsCard />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
       </section>
     </div>
   );
