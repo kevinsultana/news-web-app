@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FaShareAlt } from "react-icons/fa";
 import { FaRegBookmark, FaRegHeart } from "react-icons/fa6";
@@ -51,12 +52,18 @@ export default function Hero({ data }: { data: News[] }) {
           </p>
 
           {/* Informasi Meta */}
-          <div className="flex flex-col md:flex-row md:space-x-4 text-sm text-gray-600">
+          <div className="flex flex-col lg:items-center md:flex-row md:space-x-4 text-sm text-gray-600">
             <span>{data[0].published_date}</span>
             <span className="hidden md:inline">|</span>
             <span>{data[0].byline}</span>
             <span className="hidden md:inline">|</span>
             <span>{data[0].source}</span>
+            <span className="hidden md:inline">|</span>
+            <Link href={data[0].url}>
+              <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer">
+                Read More
+              </button>
+            </Link>
           </div>
         </div>
       </div>
